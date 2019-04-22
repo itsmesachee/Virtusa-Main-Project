@@ -1,0 +1,12 @@
+<div class="row container-fluid">
+    <div class="col-md-9">
+        <app-products #productsC [hidden]="orderFinished"></app-products>
+    </div>
+    <div class="pull-right">
+        <app-shopping-cart (onOrderFinished)=finishOrder($event) #shoppingCartC [hidden]="orderFinished">
+        </app-shopping-cart>
+    </div>
+    <div class="col-md-6 offset-3" style="overflow: hidden;">
+        <app-orders #ordersC [hidden]="!orderFinished"></app-orders>
+    </div>
+</div>

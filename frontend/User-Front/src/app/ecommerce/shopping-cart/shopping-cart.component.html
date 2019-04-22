@@ -1,0 +1,40 @@
+<div class="cart">
+    <div class="card text-white bg-danger mb-3" style="
+            margin-top: 20px;
+            box-shadow: rgba(0, 0, 0, 0.2) 2px 4px 8px 2px;
+            width: 250px;
+            margin-left: 25px;">
+
+        <div class="card-header card-header-icon">
+            <div class="card-icon">
+                <i class="material-icons">shopping_cart</i>
+            </div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Total: ₹ {{total}}</h5>
+            <hr>
+            <h6 class="card-title">Items bought:</h6>
+
+            <ul>
+                <li *ngFor="let order of orders.productOrders">
+                    {{ order.product.productName }} - {{ order.quantity}} pcs.
+                </li>
+            </ul>
+
+            <button class="btn btn-light btn-block" (click)="finishOrder()"
+                [disabled]="orders.productOrders.length == 0">Checkout
+            </button>
+        </div>
+    </div>
+    <div class="card border-0 timer" id=time *ngIf="!timeout">
+        <div class="card-body" style="text-align: center">
+            <h1 style="color: crimson; text-align: center">Sale lasts until</h1>
+            <ul style="border: 1px solid red;">
+                <li><span id="days"></span>Days</li>
+                <li><span id="hours"></span>Hours</li>
+                <li><span id="minutes"></span>Minutes</li>
+                <li><span id="seconds" style="color: red"></span>Seconds</li>
+            </ul>
+        </div>
+    </div>
+</div>

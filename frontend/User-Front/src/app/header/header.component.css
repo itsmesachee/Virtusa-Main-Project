@@ -1,0 +1,43 @@
+p{    
+  font-size: 30px;
+  margin-top: -5px;
+  padding: 5px;
+  background: -webkit-linear-gradient( #971bba,#f73db6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  }
+
+/*nav{
+  position: fixed;
+  width: 100%;
+}*/
+
+.navbar{
+  
+  position: fixed;
+  top: 0;
+}
+
+nav{
+padding: 8px;
+margin-bottom:0; 
+border-radius: 0;
+}
+
+.navbar-inverse 
+{ 
+  border-radius: 0; 
+    background-color: #101010; 
+  border-bottom:rgba(0, 0, 0, .8);
+  min-height:100px; 
+  padding-top:10px; 
+  padding-bottom:25px;
+}
+
+.nav-item{
+  padding-top: 15px;
+}
+
+nav li {
+	padding-right: 30px;
+  }

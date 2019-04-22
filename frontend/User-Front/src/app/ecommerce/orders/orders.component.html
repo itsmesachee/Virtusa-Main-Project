@@ -1,0 +1,149 @@
+<h2 class="text-center" style="margin-top: 150px;">Your Cart</h2><br><br>
+
+<div class="container">
+    <div *ngIf="orders.productOrders.length == 0">
+
+        <div class="alert alert-danger" style="text-align: center">
+            <h3>Your Cart is Empty.. But our stock isn't</h3>
+        </div>
+
+    </div>
+
+    <div *ngIf="orders.productOrders.length >0">
+
+        <div class="table table-responsive">
+
+            <thead class="thead-dark">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Product Cost</th>
+                    <th>Quantity Selected</th>
+                    <th>Total Cost Per Item</th>
+                </tr>
+            </thead>
+            <div *ngFor="let order of orders.productOrders">
+                <tbody>
+                    <tr>
+                        <td>{{ order.product.productName }}</td>
+                        <td>₹{{ order.product.productPrice }}</td>
+                        <td>{{ order.quantity }} pcs</td>
+                        <td>₹{{ order.product.productPrice * order.quantity }}</td>
+                    </tr>
+            </div>
+            <tr>
+                <td></td>
+                <td></td>
+                <td style="text-align: right">Total: ₹ {{total | number : '1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td class="text-center">
+                    GST @ 18%<br>
+                    <div style="text-align: right">
+                        + CGST 9%: ₹ {{total*0.09 | number : '1.2-2'}}<br>
+                        + SGST 9%: ₹ {{total*0.09 | number : '1.2-2'}}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td style="text-align: right">
+                    <div class="form-row pull-right">
+                        <input type="text" id="couponField" *ngIf="!applied" [(ngModel)]="code" class="text-center"
+                            placeholder="Got Coupons?">
+                        <button type="button" *ngIf="!applied" class="btn btn-success"
+                            (click)="onCoupon()">Apply</button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+            <div class="alert alert-success pull-right" *ngIf="applied && !wrongCoupon">
+                <p>Coupon Applied Successfully</p>
+            </div>
+            <div class="alert alert-warning pull-right" *ngIf="wrongCoupon &&!applied">
+                <p>Invalid Coupon Code</p>
+            </div>
+            <br><br>
+            <div style="text-align: right; margin: 20px;">
+                <h3>Total Amount Payable: <strong>₹ {{net | number : '1.2-2'}}</strong></h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 d-flex justify-content-center">
+                <button class="btn btn-primary" (click)="pay()" *ngIf="!paid && !payClick">Pay
+                    Now</button><br>
+            </div>
+            <div class="col-xs-6 d-flex justify-content-center">
+                <a type="button" class="btn btn-danger" *ngIf="!paid && !payClick" href="products">Cancel</a>
+            </div>
+        </div>
+
+        <div class="container" *ngIf="payClick==true">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading d-flex justify-content-center">
+                    <h2>Please enter your details to confirm your order</h2>
+                </div>
+                <div class="panel-body">
+                    <form ngNoForm action="https://test.payu.in/_payment" name="payuform" method="POST"
+                        target="print_popup"
+                        onsubmit="window.open('about:blank','print_popup','width=1000,height=800');">
+
+                        <div class="form-group">
+                            <label for="productInfo">First Name:</label>
+                            <input type="text" class="form-control" id="productInfo" name="productinfo"
+                                [(ngModel)]="payuform.productinfo">
+                        </div>
+                        <div class="form-group">
+                            <label for="firstname">Last Name:</label>
+                            <input type="text" class="form-control" id="firstname" name="firstname"
+                                [(ngModel)]="payuform.firstname">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                [(ngModel)]="payuform.email">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Phone:</label>
+                            <input type="number" class="form-control" id="phone" name="phone"
+                                [(ngModel)]="payuform.phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amount">Amount:</label>
+                            <input type="number" class="form-control" id="amount" readonly name="amount"
+                                [(ngModel)]="payuform.amount">
+                        </div>
+                        <textarea name="surl" id="surl" ng-model="surl" rows="2" cols="2" hidden
+                            [(ngModel)]="payuform.surl"></textarea>
+                        <textarea name="furl" id="furl" ng-model="furl" rows="2" cols="2" hidden
+                            [(ngModel)]="payuform.furl"></textarea>
+                        <textarea name="key" id="key" ng-model="key" rows="2" cols="2" hidden
+                            [(ngModel)]="payuform.key"></textarea>
+                        <textarea name="hash" id="hash" ng-model="hash" rows="2" cols="2" hidden
+                            [(ngModel)]="payuform.hash"></textarea>
+                        <textarea name="txnid" id="txnid" ng-model="txnid" rows="2" cols="2" hidden
+                            [(ngModel)]="payuform.txnid"></textarea>
+                        <textarea name="service_provider" id="service_provider" rows="2" cols="2" hidden></textarea>
+                        <button *ngIf="disablePaymentButton" type="button" class="btn btn-info"
+                            (click)="confirmPayment()">Confirm</button>
+                        <button *ngIf="!disablePaymentButton" type="submit" class="btn btn-danger">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+<!--
+<div class="alert alert-success" role="alert" *ngIf="paid">
+    <strong>Congratulation!</strong> You successfully made the order.
+</div>
+-->

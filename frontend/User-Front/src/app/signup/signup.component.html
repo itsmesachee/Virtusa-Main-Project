@@ -1,0 +1,86 @@
+<div class="container-fluid">
+
+  <div class="row container">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10 d-flex justify-content-center">
+
+      <div class="card border-0">
+        <div class="card-body">
+
+          <div class="card-title text-center">
+            <h2>Sign Up for Free</h2>
+            <br><br>
+          </div>
+
+          <div class="card-text">
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+              <div class="form-row">
+
+                <div class="col-sm-6 form-group">
+                  <label for="firstName">First Name</label>
+                  <input formControlName="firstName" placeholder="First Name" name="firstName" class="form-control"
+                    id="firstName">
+                </div>
+
+                <div class="col-sm-6 form-group">
+                  <label for="lastName">Last Name</label>
+                  <input formControlName="lastName" placeholder="Lastname" name="lastName" class="form-control"
+                    id="lastName">
+                </div>
+              </div>
+
+              <div class="alert alert-danger"
+                *ngIf="myForm.controls['firstName'].invalid && myForm.controls['firstName'].touched">
+                Enter your First Name
+              </div>
+
+              <div class="alert alert-danger"
+                *ngIf="myForm.controls['lastName'].invalid && myForm.controls['lastName'].touched">
+                Enter your Last Name
+              </div>
+
+              <div class="form-group">
+                <label for="username">Email address</label>
+                <input type="email" formControlName="username" placeholder="username" name="username"
+                  class="form-control" id="username">
+              </div>
+
+              <div class="alert alert-danger"
+                *ngIf="myForm.controls['username'].invalid && myForm.controls['username'].touched">
+                Enter valid Username
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" formControlName="password" placeholder="password" name="password"
+                  class="form-control" id="password">
+              </div>
+
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Confirm Password"
+                  [formControl]="myForm.controls['re_password']">
+              </div>
+
+              <div class="alert alert-danger"
+                *ngIf="myForm.controls['password'].invalid && myForm.controls['password'].touched">
+                Password should have 6 characters
+              </div>
+
+              <div class="alert alert-danger"
+                *ngIf="myForm.controls['re_password'].invalid && myForm.controls['re_password'].touched">
+                Passwords do not match
+              </div>
+              <button type="submit" class="btn btn-warning" [disabled]="!myForm.valid" [hidden]="message.length >0">Sign
+                Up</button>
+
+              <div class="alert alert-success" *ngIf="message.length >0">
+                {{message}}
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

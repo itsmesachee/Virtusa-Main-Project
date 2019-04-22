@@ -1,0 +1,45 @@
+<div class="sidebar" id="sidebar">
+    <button type="button" id="all" class="btn btn-link">All</button>
+    <button type="button" id="Kurti" class="btn btn-link">Kurti</button>
+    <button type="button" id="Gymwear" class="btn btn-link">Gymwear</button>
+    <button type="button" id="Jeans" class="btn btn-link">Jeans</button>
+    <button type="button" id="Jackets" class="btn btn-link">Jackets</button>
+</div>
+
+
+<!--Page Content-->
+<div class="content ">
+    <div class="row container">
+        <div class="" *ngFor="let order of productOrders" id="parent">
+            <div
+                class="col-lg-4 col-md-6 col-mb-4 container box {{order.product.productGenre}} {{order.product.productName}}">
+                <div class="card text-center">
+                    <img class="card-img-top img-responsive" src={{order.product.image1}} alt=""
+                        [routerLink]="['/admin/view', order.product.productId]">
+
+                    <div class="container-fluid">
+                        <p class="name">{{order.product.productName}}</p>
+                        <p class="sku">{{order.product.productGenre}}</p>
+                        <p class="price">₹{{order.product.productPrice}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 padding-0" *ngIf="!isProductSelected(order.product)">
+                            <input type="number" min="0" class="form-control quantity" [(ngModel)]=order.quantity>
+                        </div>
+
+                        <div class="col-4 padding-0" *ngIf="!isProductSelected(order.product)">
+                            <button class="btn btn-success btn-lg " (click)="addToCart(order)"
+                                [disabled]="order.quantity <= 0"> Add To Cart
+                            </button>
+                        </div>
+                        <div class="col-12" *ngIf="isProductSelected(order.product)">
+                            <button class="btn btn-danger btn-block btn-lg" (click)="removeFromCart(order)">
+                                Remove From Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

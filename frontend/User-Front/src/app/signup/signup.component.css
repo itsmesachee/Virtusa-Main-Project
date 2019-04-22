@@ -1,0 +1,57 @@
+
+.text-muted{
+  color: rgb(179, 179, 179) !important;
+}
+
+.alert{
+  font-size: 11px;
+}
+
+.container-fluid{
+  background-image: url(/assets/bluepink.jpg);
+    overflow:hidden;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%; 
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.card{
+  margin: 50px;  
+  border-radius: 20px;
+  width: 450px;
+}
+.card-body{
+  padding: 40px;
+  color: black;
+  font-size: 15px;
+}
+
+.btn[type=submit]{
+  border-radius: 50px;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  width: 100%;
+  opacity: 0.9;
+  padding: 10px;
+  border: none;
+  margin: 5px 0;  
+  font-size: 17px;
+}
+
+button:hover {
+  opacity:1;
+}
+
+.container-fluid{
+margin-top: 100px;
+}
+
+input{
+  font-size: 13px;
+}

@@ -1,0 +1,96 @@
+<body onload='currentSlide(1)'>
+  <br><br>
+
+  <div class="container-fluid">
+    <div class="row container-fluid">
+      <div class="col-sm-1 container-fluid">
+        <img class="demo cursor" src="{{productReg.image1}}" style="width:100%" onclick="currentSlide(1)"
+          alt="{{productReg.productName}} image">
+        <img class="demo cursor" src="{{productReg.image2}}" style="width:100%" onclick="currentSlide(2)"
+          alt="{{productReg.productName}} image">
+        <img class="demo cursor" src="{{productReg.image3}}" style="width:100%" onclick="currentSlide(3)"
+          alt="{{productReg.productName}} image">
+        <img class="demo cursor" src="{{productReg.image4}}" style="width:100%" onclick="currentSlide(4)"
+          alt="{{productReg.productName}} image">
+        <img class="demo cursor" src="{{productReg.image5}}" style="width:100%" onclick="currentSlide(5)"
+          alt="{{productReg.productName}} image">
+        <img class="demo cursor" src="{{productReg.sizeChartImage}}" style="width:100%" onclick="currentSlide(6)"
+          alt="{{productReg.productName}} image">
+      </div>
+      <div class="col-sm-4">
+
+
+        <div class="mySlides">
+          <div class="numbertext">1 / 6</div>
+          <img class="slideshow" src="{{productReg.image1}}" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">2 / 6</div>
+          <img class="slideshow" src="{{productReg.image2}}" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">3 / 6</div>
+          <img class="slideshow" src="{{productReg.image3}}" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">4 / 6</div>
+          <img class="slideshow" src="{{productReg.image4}}" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">5 / 6</div>
+          <img class="slideshow" src="{{productReg.image5}}" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">6 / 6</div>
+          <img class="slideshow" src="{{productReg.sizeChartImage}}" style="width:100%">
+        </div>
+      </div>
+      <div class="col-sm-7 container-fluid detail">
+        <h1>{{productReg.productName}}</h1>
+        <p class="price">Price: ₹{{productReg.productPrice}} </p>        
+        <p><b>Care Instructions:</b> {{productReg.productCareInstructions}}</p>
+        <p><b>Fabric:</b> {{productReg.productFabric}}</p>
+        <p><b>Colour Declaration :</b> There might be slight variation in the actual color of the product due to
+          different screen resolutions.</p>
+        <p><b>Occasion:</b> {{productReg.productOccasion}}</p>
+        <p><b>Package Contents:</b> {{productReg.productPackageContents}} </p>
+      </div>
+    </div>
+  </div>
+  <br><br><br>
+
+  <div class="container-fluid">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Customer Review</div>
+      <div class="panel-body">
+        <div class="container comment">
+          <img src="assets/10.png" alt="Avatar" style="width:90px">
+          <p><span>Neha Khandelwal.</span> Mumbai,Maharashtra.</p>
+          <p>Fabulous.....it's look nice...totally satisfied...very nice material.The product was exactly as shown in
+            the pic.Fit is perfect. It may shrink after a wash but no problem. value for money. go for it.</p>
+        </div>
+
+        <div class="container comment">
+          <img src="assets/11.jpg" alt="Avatar" style="width:90px">
+          <p><span>Rebecca Flex.</span> Pune.</p>
+          <p>Kurti is expensive.. the design n cloth is fine as shown in picture but overpriced</p>
+        </div>
+
+        <div class="container comment">
+          <textarea id="subject" class="form-control" formControlName="productDescription"
+            placeholder="Write a review.." style="height:125px"></textarea>
+        </div>
+        
+        <div class="container-fluid buttonn">
+          <button class="btn btn-primary btn-lg" type="button">Submit</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,161 @@
+
+
+.card {
+  box-shadow: 2px 4px 8px 2px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: arial;
+  padding: 10px;
+}
+
+.price {
+  color: grey;
+  font-size: 2.2vw;
+}
+
+.name{
+  font-size: 2.4vw;
+}
+
+.sku{
+  font-size: 2.0vw;
+}
+
+
+.quantity{
+  margin-left: 15px;
+}
+
+
+.card button:hover {
+  opacity: 0.7;
+}
+
+img{height: 250px;
+}
+
+
+
+/* The side navigation menu */
+.sidebar {
+padding: 0;
+width: 200px;
+margin-top: 100px;
+background:#101010;
+position: fixed;
+left: 0;
+overflow-y: auto;
+overflow-x: auto;
+height: 100%;
+z-index: 1;
+}
+
+.sidebar button {
+width: 200px;
+display: block;
+text-align: center;
+color:rgba(255, 255, 255, .4);
+padding: 16px;
+text-decoration: none;
+font-size: 16px;
+cursor: pointer;
+}
+
+.sidebar button.active {
+color: white;
+border: none;
+}
+
+.sidebar button:hover:not(.active) {
+background-color: #555;
+color: white;
+}
+
+.content {
+  margin-top: 100px;
+  min-height: 800px;
+margin-left: 250px;
+padding: 1px 16px;
+overflow-x: hidden;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+@media screen and (max-width: 700px) {
+.sidebar {
+  width: 100%;
+  height: auto;
+  position: relative;
+
+}
+.sidebar button {float: left;}
+div.content {margin-left: 0;}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+.sidebar button {
+  text-align: center;
+  float: none;
+}
+}
+
+
+/**********************/
+/* forsearch bar */
+/**********************/
+
+
+.searchbar{
+margin-bottom: auto;
+margin-top: 20px;
+height: 60px;
+background-color: #353b48;
+border-radius: 30px;
+padding: 10px;
+}
+
+.search_input{
+color: white;
+border: 0;
+outline: 0;
+background: none;
+width: 0;
+caret-color:transparent;
+line-height: 40px;
+transition: width 0.4s linear;
+font-size: 16px;
+}
+
+.searchbar:hover > .search_input{
+padding: 0 10px;
+width: 120px;
+caret-color:red;
+transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_icon{
+background: white;
+color: #e74c3c;
+}
+
+.search_icon{
+height: 40px;
+width: 40px;
+float: right;
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 50%;
+color:white;
+}
+
+
+/**********************/
+/* for search bar end */
+/**********************/
+
+
+
